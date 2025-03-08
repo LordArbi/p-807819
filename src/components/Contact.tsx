@@ -3,6 +3,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Mail, MessageSquare, Send, ArrowRight } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
+import { database } from '@/lib/firebase';
+import { ref, push } from 'firebase/database';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,19 +20,37 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Create a new date timestamp
+      const timestamp = new Date().toISOString();
+      
+      // Add data to Firebase
+      const messagesRef = ref(database, 'messages');
+      await push(messagesRef, {
+        ...formData,
+        timestamp
+      });
+      
+      // Reset form and show success message
       setFormData({ name: '', email: '', message: '' });
       toast({
         title: "Message sent successfully",
         description: "Thanks for reaching out! I'll get back to you soon.",
       });
-    }, 1500);
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast({
+        title: "Message failed to send",
+        description: "There was an error sending your message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   useEffect(() => {
