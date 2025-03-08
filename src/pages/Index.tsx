@@ -6,6 +6,7 @@ import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 const Index = () => {
   // Implement smooth scrolling for anchor links
@@ -59,14 +60,16 @@ const Index = () => {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <NavBar />
-      <Hero />
-      <Projects />
-      <Skills />
-      <Contact />
-      <Footer />
-    </main>
+    <ThemeProvider>
+      <main className="min-h-screen bg-background text-foreground">
+        <NavBar />
+        <Hero />
+        <Projects />
+        <Skills />
+        <Contact />
+        <Footer />
+      </main>
+    </ThemeProvider>
   );
 };
 
