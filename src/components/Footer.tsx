@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <a href="#" className="text-lg font-display font-medium">
-              Portfolio
+              Arbi-Gjonaj
             </a>
             <p className="text-sm text-muted-foreground mt-2 max-w-md">
               A showcase of my development projects, skills, and experiences.
@@ -43,7 +43,7 @@ const Footer = () => {
         
         <div className="border-t border-border/40 mt-8 pt-8 text-sm text-muted-foreground">
           <div className="flex flex-col sm:flex-row justify-between items-center">
-            <p>&copy; {currentYear} Portfolio. All rights reserved.</p>
+            <p>&copy; {currentYear} Arbi-Gjonaj. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 sm:mt-0">
               <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>

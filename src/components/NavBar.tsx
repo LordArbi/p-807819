@@ -34,7 +34,7 @@ const NavBar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a href="#" className="text-lg font-display font-medium">
-          Portfolio
+          Arbi-Gjonaj
         </a>
 
         {/* Desktop Navigation */}
